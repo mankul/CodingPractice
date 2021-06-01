@@ -1,0 +1,4 @@
+#exclude binary files
+
+
+./.a.out
