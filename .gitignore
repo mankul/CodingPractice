@@ -1,4 +1,7 @@
 #exclude binary files
-
-
+././*.gch
+././*.dSYM
+./.*.gch
+./.*.dSYM
+././a.out
 ./.a.out
