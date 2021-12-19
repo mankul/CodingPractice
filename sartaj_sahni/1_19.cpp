@@ -13,9 +13,9 @@ int main(){
     // vector< pair<int, int> >dictionary;
     map< int, int > second_dictionary;
 
-    for(int i = 0; i < 10; i++){
+    for(int i = 0; i < num; i++){
         second_dictionary[i] = i + 10;
-        // second_dictionary[i] = i;
+        
     }
     for(map<int, int> ::iterator i = second_dictionary.begin(); i != second_dictionary.end(); i++)
     cout<<i->first<<"\t"<<i->second<<endl;
