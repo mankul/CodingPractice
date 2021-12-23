@@ -1,3 +1,16 @@
+
+#exclude binary files
+././*.gch
+././*.dSYM
+./.*.gch
+./.*.dSYM
+././a.out
+./a.out
 a.out
-*/.a.out
-*/*/a.out
+./././a.out
+*.json
+./*.json
+././*.json
+./././*.json
+.vscode
+./.vscode
