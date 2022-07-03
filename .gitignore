@@ -1,5 +1,7 @@
 
 #exclude binary files
+.DS_Store
+*/.DS_Store
 ././*.gch
 ././*.dSYM
 ./.*.gch
