@@ -18,3 +18,5 @@ a.out
 ./.vscode
 *.exe
 *.obj
+*.swp
+*/*.swp
