@@ -16,3 +16,7 @@ a.out
 ./././*.json
 .vscode
 ./.vscode
+*.exe
+*.obj
+*.swp
+*/*.swp
