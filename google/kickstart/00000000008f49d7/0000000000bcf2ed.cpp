@@ -54,57 +54,44 @@ using namespace std;
 
 int main(){
 
-
     int t, n, number, prev, count;
     cin>>t;
     for(int test = 0; test < t; test++){
         cin>>n;
         int maxPrev = -1;
-        bool isFlagMax = true;
         prev = -1;
         count  = 0;
+        vector<int> arr;
         for(int i = 0; i < n; i++){
             cin>>number;
-            
+            arr.push_back(number);
+        }
+        for(int i = 0; i < n; i++){
             if(i == 1){
-                if(number < prev){
+                if(arr[i] < arr[0]){
                     count += 1;
-                    cout<<":"<<i<<endl;
                 }
-            else if( i == n-1 ){
-                    if(number > maxPrev){
-                    cout<<":"<<i<<endl;
-                        count + = 1;
-                    }
+            }
+            else if( i == n-1){
+                if(arr[i] > maxPrev){
+                    count += 1;
+                }
             }
             else{
-                if( (number < prev) && (prev >= maxPrev) && isFlagMax ){
-                    cout<<":"<<i<<endl;
+                if( (arr[i] > maxPrev)  && ( arr[i+1] > arr[i]) ){
                     count += 1;
                 }
             }
 
-            if(number > maxPrev){
-                maxPrev = number;
-                isFlagMax = true;
-            }
-            else if(number == maxPrev){
-                isFlagMax = false;
-            }
-            
-            prev = number;
-        }
-
-        cout<<"Case #"<<test<<": "<<count<<endl;
     
+        }
+        cout<<"Case #"<<test<<": "<<count<<endl;
+
+
     }
 
-    
-
-
-
     return 0;
-}
 
+}
 
 
