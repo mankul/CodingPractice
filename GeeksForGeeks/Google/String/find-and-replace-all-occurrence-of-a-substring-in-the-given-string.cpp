@@ -5,7 +5,7 @@
 
 using namespace std;
 
-
+// buggy
 
 /*
 For all the prefixes of s, match suffix with s1 and replace the matching with s2.
