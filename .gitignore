@@ -20,3 +20,6 @@ a.out
 *.obj
 *.swp
 */*.swp
+*.gch
+*/*.gch
+*/*/*.gch
