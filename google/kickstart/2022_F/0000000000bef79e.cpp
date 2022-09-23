@@ -8,10 +8,7 @@ struct Node
 {
     struct Node * next1;
     struct Node * next2;
-
 };
-
-
 
 int main(){
 
