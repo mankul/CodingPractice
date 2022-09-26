@@ -65,7 +65,7 @@ void displayLinkedList(Node * headPointer){
     Node * head = nullptr;
     Node * positionPointer = nullptr;
     Node * pointer;
-    int pos = 0;
+    int pos = 1;
     for(auto number: array){
         pointer = insertToLinkedListW(&head, number);
         if(pos == position)
@@ -117,6 +117,90 @@ int findCycle(Node * head, int * lastNumber, int * intersectionPoint){
 
 
 
+
+bool findCycleWithTwoPointerTechnique(Node * headNode){
+
+    Node * pointer1 = headNode;
+    Node * pointer2 = headNode;
+
+    while(pointer1->next != nullptr && pointer2->next != nullptr && pointer2->next->next != nullptr){
+        pointer1 = pointer1->next;
+        pointer2 = pointer2->next->next;
+        if(pointer1 == pointer2)
+            break;
+    }
+    if(pointer1->next == nullptr || pointer2->next == nullptr || pointer2->next->next == nullptr)
+        cout<<"cycle is not present"<<endl;
+    else{
+        cout<<"cycle in linked list"<<endl;
+        return true;
+    }
+    return false;
+}
+
+
+int getLengthOfLoop(Node * headNode){
+    Node * pointer1 = headNode;
+    Node * pointer2 = headNode;
+    bool isCyclePresent = false;
+    while(pointer1->next != nullptr && pointer2->next != nullptr && pointer2->next->next != nullptr){
+        pointer1 = pointer1->next;
+        pointer2 = pointer2->next->next;
+        if(pointer1 == pointer2){
+            isCyclePresent = true;
+            break;
+        }
+    }
+
+    int count = 0;
+    if(isCyclePresent){
+        count = 1;
+        while(pointer1->next != pointer2){
+            pointer1 = pointer1->next;
+            count++;
+        }
+    }
+    return count;
+}
+
+
+
+vector<int> loopElements(Node * head){
+    Node * pointer1 = head;
+    Node * pointer2 = head;
+    bool loopFound = false;
+    while(pointer1->next != nullptr && pointer2->next != nullptr && pointer2->next->next != nullptr){
+        pointer1 = pointer1->next;
+        pointer2 = pointer2->next->next;
+        if(pointer1 == pointer2){
+            loopFound = true;
+            break;
+        }
+    }   
+
+    vector<int> loopElements;
+    if(loopFound){
+        do{
+            loopElements.push_back(pointer1->val);
+            pointer1 = pointer1->next;
+        }while(pointer1 != pointer2);
+
+    }
+    return loopElements;
+}
+
+
+
+void printCyclicList(Node * head){
+    int count = 0;
+    while(count < 30)
+    {
+        cout<<head->val;
+        head = head->next;
+        count++;
+    }
+}
+
 int main(){
 
 
@@ -137,12 +221,25 @@ int main(){
 
     cout<<count<<" last number "<<lastNumber<<" intersection point at "<<intersectionPoint<<endl;
 
+    cout<<findCycleWithTwoPointerTechnique(head)<<endl;
+
+
+
     head = createCyclicLinkedList(arr, length/2); // creating cycle at the middle position
 
     count = findCycle(head, & lastNumber, &intersectionPoint);
     cout<<count<<" last number "<<lastNumber<<" intersection point at "<<intersectionPoint<<endl;
 
+    cout<<findCycleWithTwoPointerTechnique(head)<<endl;
 
 
+    cout<<"loop length is "<<getLengthOfLoop(head)<<endl;
+
+
+    vector<int> loopEl = loopElements(head);
+    for(auto iterator : loopEl){
+        cout<<iterator<<endl;
+    }
+    printCyclicList(head);
     return 0;
 }
