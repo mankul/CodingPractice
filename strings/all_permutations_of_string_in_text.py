@@ -1,16 +1,18 @@
 
 print("input text and string seperated by new lines")
-text = raw_input()
-string = raw_input()
+text = input()
+string = input()
 
 char_dict = {}
-
 for char in string:
     if char in char_dict.keys():
         char_dict[char] += 1
     else:
-        char_dict[char] = 0
+        char_dict[char] = 1
 
+
+print(text)
+print(string)
 
 windows = len(text) - len(string)  + 1
 substrings_ = []
@@ -23,7 +25,7 @@ index = 0
 subindex = 0
 char_dict_copy = char_dict.copy()
 count = 0
-
+print(windows)
 while index < windows:
     while subindex < len(string):
         if text[index + subindex] in char_dict_copy.keys():
@@ -47,11 +49,12 @@ while index < windows:
         count = 0
         char_dict_copy = char_dict.copy()
 
-        index += subindex
+        index += (subindex+1)
         subindex = 0
 
 
-
+print("matching substrings are {}".format(substrings_))
+exit(0)
 
 # naive strategy
 # all substrings are compared.
@@ -66,7 +69,7 @@ for index in range(windows):
             else:
                 break
     if count == len(string):
-        substrings_.append(text[index:index+count)
+        substrings_.append(text[index:index+count])
         substr_counts += 1
 
 print("substrings count are {}".format(substr_counts))
