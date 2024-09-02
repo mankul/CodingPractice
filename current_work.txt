@@ -3,3 +3,6 @@ working on
 
 DYNAMIC_PROGRAMMING/fib_series.cpp
 the variable arr_populated is not correct.
+removed variable.
+seg failt in malloc.
+debugging
